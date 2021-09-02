@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Archive</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <header>
+        <section class="container text-center py-5">
+            <h2 class="fs-1 text-info fw-bold border rounded-pill d-inline px-3 bg-secondary opacity-50">Book Archive</h2>
+        </section>
+    </header>
+    <main>
+        <section class="container">
+            <div id="search-container" class="text-center">
+                <input id="search-box" class="w-50 px-3 py-1 fs-5 border border-info rounded" type="text" placeholder="Write Your Book Name">
+                <input onclick="findBooks()" id="search-button" class="px-3 py-1 fs-5 text-white fw-semibold bg-info border rounded" type="button" value="Search">
+            </div>
+        </section>
+        <section class="container">
+            <div id="spinner" class="d-none p-3 text-center spinner">
+                <div class="spinner-border" role="status">
+                </div>
+            </div>
+        </section>
+        <section class='container'>
+            <div id="info-container" class=" row justify-content-center text-center">
+
+            </div>
+        </section>
+    </main>
+    <script src="main.js"></script>
+</body>
+</html>
