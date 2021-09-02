@@ -12,25 +12,27 @@
 <body>
     <header>
         <section class="container text-center py-5">
-            <h2 class="fs-1 text-info fw-bold border rounded-pill d-inline px-3 bg-secondary opacity-50">Book Archive</h2>
+            <h2 class="fs-1 text-info fw-bold border rounded-pill shadow d-inline px-5 bg-warning bg-opacity-25">Book Archive</h2>
         </section>
     </header>
     <main>
         <section class="container">
             <div id="search-container" class="text-center">
-                <input id="search-box" class="w-50 px-3 py-1 fs-5 border border-info rounded" type="text" placeholder="Write Your Book Name">
-                <input onclick="findBooks()" id="search-button" class="px-3 py-1 fs-5 text-white fw-semibold bg-info border rounded" type="button" value="Search">
+                <input id="search-box" class="w-50 px-3 py-1 border border-info rounded" type="text" placeholder="Write Your Book Name">
+                <input onclick="findBooks()" id="search-button" class="px-3 py-1 text-white fw-semibold bg-info border rounded" type="button" value="Search">
+            </div>
+            <div id="error" class="text-center">
+
             </div>
         </section>
         <section class="container">
-            <div id="spinner" class="d-none p-3 text-center spinner">
-                <div class="spinner-border" role="status">
-                </div>
+            <div id="data-container" class="text-center">
+                
             </div>
         </section>
         <section class='container'>
-            <div id="info-container" class=" row justify-content-center text-center">
-
+            <div id="info-container" class="row g-5 justify-content-center text-center mx-auto">
+                
             </div>
         </section>
     </main>

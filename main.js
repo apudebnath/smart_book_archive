@@ -1,47 +1,52 @@
-
-const showSpinner = displayS => {
-    document.getElementById('spinner').style.display = displayS;
-}
+const errorBox = document.getElementById('error'); 
 
 const findBooks = () => {
     const searchText = document.getElementById('search-box').value;
+    if(searchText === ""){
+        errorBox.innerText = "No result found";
+    }
+    else{
+        errorBox.innerText = '';
+    };
+
     loadBooks(searchText);
     document.getElementById('search-box').value = '';
-    // const mySpinner = document.getElementById('spinner');
-    // mySpinner.style.display = 'block';
-    showSpinner('block');
 }
 
 const loadBooks = (searchText) => {
-    const url = `http://openlibrary.org/search.json?q=${searchText}`;
+    const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
     .then(response => response.json())
-    .then(data => displayBooks(data))
-    
+    .then(data => displayBooks(data))   
 }
-loadBooks();
+
 
 const displayBooks = (books) => {
     const infoContainer = document.getElementById('info-container');
     infoContainer.textContent = '';
-
+    const dataContainer= document.getElementById('data-container');
+    dataContainer.textContent = '';
     const infoBox = document.createElement('div');
     infoBox.classList.add('info-box');
     infoBox.innerHTML =`
     <p>Search found: <span class="fw-bold">${books.numFound}</span> Search Show:<span class="fw-bold">${books.docs.length}</span></p>
     `;
-    infoContainer.appendChild(infoBox);
+    dataContainer.appendChild(infoBox);
+
     
-    books.docs.forEach(book => {
-        //console.log(book);
+    books.docs?.forEach(book => {
+        console.log(book);
         const bookBox = document.createElement('div');
+        bookBox.classList.add('col-md-4');
         bookBox.innerHTML =`
-        <div class=" p-3 m-3 shadow rounded  bg-white">
-        <h2>${book.title}</h2>
-        <p><span>Author Name:<span class="fw-bold">${book.author_name} </span> ; </span><span>Published Year:<span class="fw-bold">${book.first_publish_year} </span> ; </span><span>Publisher:<span class="fw-bold"> ${book.publisher}</span></span></p>
+        <div class="h-100 pt-5 px-3 mx-auto overflow-auto shadow rounded  bg-white">
+        <img src="https://covers.openlibrary.org/b/id/${book.cover_i}-M.jpg" alt="">
+        <h4 class="fs-4">${book.title}</h4>
+        <p><span>Author:<span class="fw-bold">${book.author_name} </span> ; </span><span>Published Year:<span class="fw-bold">${book.first_publish_year} </span> ; </span><span>Publisher:<span class="fw-bold"> ${book.publisher[0]}</span></span></p>
         </div>
         `;
         infoContainer.appendChild(bookBox);
-        
     });
+
 };
+

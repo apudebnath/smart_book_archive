@@ -1,8 +1,4 @@
-
-body{
-    margin:0px;
-    background-color: rgb(238, 236, 245);
-}
-.spinner{
-    display:none;
+body {
+    margin: 0px;
+    background-color: rgba(249, 247, 253, 0.384);
 }
