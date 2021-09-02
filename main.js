@@ -2,6 +2,7 @@ const errorBox = document.getElementById('error');
 
 const findBooks = () => {
     const searchText = document.getElementById('search-box').value;
+    // error validation
     if(searchText === ""){
         errorBox.innerText = "No result found";
     }
@@ -12,7 +13,7 @@ const findBooks = () => {
     loadBooks(searchText);
     document.getElementById('search-box').value = '';
 }
-
+// fetch
 const loadBooks = (searchText) => {
     const url = `https://openlibrary.org/search.json?q=${searchText}`;
     fetch(url)
@@ -20,7 +21,7 @@ const loadBooks = (searchText) => {
     .then(data => displayBooks(data))   
 }
 
-
+// get data and show data
 const displayBooks = (books) => {
     const infoContainer = document.getElementById('info-container');
     infoContainer.textContent = '';
@@ -33,7 +34,7 @@ const displayBooks = (books) => {
     `;
     dataContainer.appendChild(infoBox);
 
-    
+    // forEach loop
     books.docs?.forEach(book => {
         console.log(book);
         const bookBox = document.createElement('div');
